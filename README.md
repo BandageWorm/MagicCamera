@@ -1,5 +1,12 @@
 # MagicCamera 
 
+原项目：`https://github.com/wuhaoyu1990/MagicCamera` 
+原作者以不再维护，在原代码基础上更新了gradle编译脚本，并会逐步完成原作者未完成的功能。
+
+以下为原项目介绍
+
+----
+
 Idea from:android-gpuimage
 
 Real-time Filter Camera&VideoRecorder And ImageEditor With Face Beauty For Android
