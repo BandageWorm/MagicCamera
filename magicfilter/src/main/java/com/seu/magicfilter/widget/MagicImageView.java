@@ -72,14 +72,32 @@ public class MagicImageView extends MagicBaseView{
         imageHeight = bitmap.getHeight();
         adjustSize(0, false, false);
         requestRender();
+
+        initMagicBeautify();
     }
 
-    public void initMagicBeautify(){
+    public void initMagicBeautify() {
         if(_bitmapHandler == null){
             Log.e("MagicSDK", "please storeBitmap first!!");
             return;
         }
         MagicJni.jniInitMagicBeautify(_bitmapHandler);
+    }
+
+    public void skinSmooth(float value) {
+        if(_bitmapHandler == null){
+            Log.e("MagicSDK", "please storeBitmap first!!");
+            return;
+        }
+        MagicJni.jniStartSkinSmooth(value);
+    }
+
+    public void whiteSkin(float value) {
+        if(_bitmapHandler == null){
+            Log.e("MagicSDK", "please storeBitmap first!!");
+            return;
+        }
+        MagicJni.jniStartWhiteSkin(value);
     }
 
     public void setBitmap(Bitmap bitmap){

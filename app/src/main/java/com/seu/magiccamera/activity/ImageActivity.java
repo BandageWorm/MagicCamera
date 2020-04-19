@@ -36,9 +36,7 @@ public class ImageActivity extends FragmentActivity {
     private MagicImageView mMagicV;
     private Fragment mFragment;
 
-    private int mFragmentTag = -1;
-
-    private final int REQUEST_PICK_IMAGE = 1;
+    private final static int REQUEST_PICK_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,16 +98,12 @@ public class ImageActivity extends FragmentActivity {
 
     }
 
-    private void hideFragment() {
-        ((ImageEditBaseFragment) mFragment).onHide();
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                if (mFragmentTag != -1) {
-                    hideFragment();
+                if (mFragment != null) {
+                    ((ImageEditBaseFragment) mFragment).onHide();
                     return true;
                 }
                 break;

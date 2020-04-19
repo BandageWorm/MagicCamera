@@ -69,12 +69,14 @@ public class MagicCameraView extends MagicBaseView {
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         super.onSurfaceCreated(gl, config);
         recordingEnabled = videoEncoder.isRecording();
-        if (recordingEnabled)
+        if (recordingEnabled) {
             recordingStatus = RECORDING_RESUMED;
-        else
+        } else {
             recordingStatus = RECORDING_OFF;
-        if(cameraInputFilter == null)
+        }
+        if(cameraInputFilter == null) {
             cameraInputFilter = new MagicCameraInputFilter();
+        }
         cameraInputFilter.init();
         if (textureId == OpenGlUtils.NO_TEXTURE) {
             textureId = OpenGlUtils.getExternalOESTextureID();
@@ -161,13 +163,14 @@ public class MagicCameraView extends MagicBaseView {
     }
 
     private void openCamera(){
-        if(CameraEngine.getCamera() == null)
+        if (CameraEngine.getCamera() == null) {
             CameraEngine.openCamera();
+        }
         CameraInfo info = CameraEngine.getCameraInfo();
-        if(info.orientation == 90 || info.orientation == 270){
+        if(info.orientation == 90 || info.orientation == 270) {
             imageWidth = info.previewHeight;
             imageHeight = info.previewWidth;
-        }else{
+        } else {
             imageWidth = info.previewWidth;
             imageHeight = info.previewHeight;
         }

@@ -5,6 +5,7 @@ import com.seu.magicfilter.filter.helper.MagicFilterType;
 import com.seu.magicfilter.helper.SavePictureTask;
 import com.seu.magicfilter.utils.MagicParams;
 import com.seu.magicfilter.widget.MagicCameraView;
+import com.seu.magicfilter.widget.MagicImageView;
 import com.seu.magicfilter.widget.base.MagicBaseView;
 
 import java.io.File;
@@ -49,6 +50,20 @@ public class MagicEngine {
         if(MagicParams.magicBaseView instanceof MagicCameraView && MagicParams.beautyLevel != level) {
             MagicParams.beautyLevel = level;
             ((MagicCameraView) MagicParams.magicBaseView).onBeautyLevelChanged();
+        }
+    }
+
+    public void setSmoothSkin(float level){
+        if(MagicParams.magicBaseView instanceof MagicImageView && MagicParams.smoothLevel != level) {
+            MagicParams.smoothLevel = level;
+            ((MagicImageView) MagicParams.magicBaseView).skinSmooth(level);
+        }
+    }
+
+    public void setWhiteSkin(float level){
+        if(MagicParams.magicBaseView instanceof MagicImageView && MagicParams.whiteLevel != level) {
+            MagicParams.whiteLevel = level;
+            ((MagicImageView) MagicParams.magicBaseView).whiteSkin(level);
         }
     }
 

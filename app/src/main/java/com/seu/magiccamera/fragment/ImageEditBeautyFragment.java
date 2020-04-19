@@ -71,16 +71,16 @@ public class ImageEditBeautyFragment extends ImageEditBaseFragment {
         init();
     }
 
-    private int level = -1;
+    private float smoothlevel = -1;
     private void init() {
     	mSmoothBubbleSeekBar.setOnBubbleSeekBarChangeListener(new BubbleSeekBar.OnBubbleSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				int newlevel = progress / 20;
-				if (newlevel != level) {
-					Log.w("BeautifyEdit", "onProgressChanged:" + progress + ", level:" + newlevel);
-					mEngine.setBeautyLevel(newlevel);
-					level = newlevel;
+				float newlevel = ((float) progress) / 100f;
+				if (newlevel != smoothlevel) {
+					Log.w("BeautifyEdit", "onSmoothProgressChanged:" + progress + ", level:" + newlevel);
+					mEngine.setSmoothSkin(newlevel);
+                    smoothlevel = newlevel;
 				}
 			}
 
@@ -94,6 +94,24 @@ public class ImageEditBeautyFragment extends ImageEditBaseFragment {
 
 			}
 		});
+
+        mWhiteBubbleSeekBar.setOnBubbleSeekBarChangeListener(new BubbleSeekBar.OnBubbleSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.w("BeautifyEdit", "onWhiteProgressChanged:" + progress);
+                mEngine.setSmoothSkin(((float) progress) / 100f);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override

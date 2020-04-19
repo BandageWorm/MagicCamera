@@ -17,6 +17,10 @@ public class MagicParams {
 
     public static int beautyLevel = 5;
 
+    public static float smoothLevel = 0f;
+    public static float whiteLevel = 0f;
+
+
     public MagicParams() {
 
     }
